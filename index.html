@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <script>
+      let humanScore = 0;
+      let computerScore = 0;
+      function getComputerChoice() {
+        const n = Math.floor(Math.random() * 3);
+        switch (n) {
+          case 0:
+            return "rock";
+          case 1:
+            return "paper";
+          case 2:
+            return "scissors";
+        }
+      }
+
+      function getHumanChoice() {
+        return prompt("Which is your choice?").toLowerCase();
+      }
+
+      function playRound() {
+        let cChoice = getComputerChoice();
+        let hChoice = getHumanChoice();
+        while (
+          hChoice != "rock" &&
+          hChoice != "paper" &&
+          hChoice != "scissors"
+        ) {
+          hChoice = getHumanChoice();
+        }
+
+        while (hChoice == cChoice) {
+          alert(cChoice + " vs " + hChoice + ". Repeat your choices");
+          cChoice = getComputerChoice();
+          hChoice = getHumanChoice();
+        }
+
+        console.log("Computer: " + cChoice + ". You: " + hChoice + ".");
+        return winner(cChoice, hChoice);
+      }
+
+      function winner(c, h) {
+        if (c == "rock") {
+          return h == "paper";
+        } else if (c == "paper") {
+          return h == "scissors";
+        } else {
+          return h == "rock";
+        }
+      }
+
+      for (let i = 0; i < 5; ++i) {
+        let w = playRound();
+        if (w == 0)
+          console.log(
+            "Score: Computer -> " + ++computerScore + ". You -> " + humanScore
+          );
+        else {
+          console.log(
+            "Score: Computer -> " + computerScore + ". You -> " + ++humanScore
+          );
+        }
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
