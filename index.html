@@ -4,69 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    <script>
-      let humanScore = 0;
-      let computerScore = 0;
-      function getComputerChoice() {
-        const n = Math.floor(Math.random() * 3);
-        switch (n) {
-          case 0:
-            return "rock";
-          case 1:
-            return "paper";
-          case 2:
-            return "scissors";
-        }
-      }
-
-      function getHumanChoice() {
-        return prompt("Which is your choice?").toLowerCase();
-      }
-
-      function playRound() {
-        let cChoice = getComputerChoice();
-        let hChoice = getHumanChoice();
-        while (
-          hChoice != "rock" &&
-          hChoice != "paper" &&
-          hChoice != "scissors"
-        ) {
-          hChoice = getHumanChoice();
-        }
-
-        while (hChoice == cChoice) {
-          alert(cChoice + " vs " + hChoice + ". Repeat your choices");
-          cChoice = getComputerChoice();
-          hChoice = getHumanChoice();
-        }
-
-        console.log("Computer: " + cChoice + ". You: " + hChoice + ".");
-        return winner(cChoice, hChoice);
-      }
-
-      function winner(c, h) {
-        if (c == "rock") {
-          return h == "paper";
-        } else if (c == "paper") {
-          return h == "scissors";
-        } else {
-          return h == "rock";
-        }
-      }
-
-      for (let i = 0; i < 5; ++i) {
-        let w = playRound();
-        if (w == 0)
-          console.log(
-            "Score: Computer -> " + ++computerScore + ". You -> " + humanScore
-          );
-        else {
-          console.log(
-            "Score: Computer -> " + computerScore + ". You -> " + ++humanScore
-          );
-        }
-      }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1 id="you-text" class="large-text">YOU: 0</h1>
+      <div class="buttons">
+        <div class="human-buttons">
+          <button id="human-rock" class="rock button">
+            <img src="Rock-Pixel.png" alt="" />
+          </button>
+          <button id="human-paper" class="paper button">
+            <img src="Paper-Pixel.png" alt="" />
+          </button>
+          <button id="human-scissors" class="Scissors button">
+            <img src="Scissors-Pixel.png" alt="" />
+          </button>
+        </div>
+        <div class="computer-buttons">
+          <button id="cpu-rock" class="rock button">
+            <img src="Rock-Pixel.png" alt="" />
+          </button>
+          <button id="cpu-paper" class="paper button">
+            <img src="Paper-Pixel.png" alt="" />
+          </button>
+          <button id="cpu-scissors" class="Scissors button">
+            <img src="Scissors-Pixel.png" alt="" />
+          </button>
+        </div>
+      </div>
+      <h1 id="cpu-text" class="large-text">CPU: 0</h1>
+    </div>
+  </body>
 </html>
